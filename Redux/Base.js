@@ -14,7 +14,7 @@ const Base = () => {
     const counter = useSelector((state) => state.counterReducer.counter);
     const auth = useSelector((state) => state.auth);
     const dispatch = useDispatch();
-    const [text, setText] = React.useState(1);
+    const [currentNumber, setCurrentNumber] = React.useState(1);
 
     return (
         <>
@@ -25,7 +25,7 @@ const Base = () => {
                 <Text style={styles.text}>
                     {counter}
                 </Text>
-                <Text style={styles.text} onPress={()=>dispatch(incrementWithProps(text))}>
+                <Text style={styles.text} onPress={()=>dispatch(incrementWithProps(currentNumber))}>
                     +
                 </Text>
             </View>
@@ -35,8 +35,8 @@ const Base = () => {
                 </Text>
                 <TextInput
                     style={styles.input}
-                    onChangeText={(value) => {setText(value)}}
-                    value={text}
+                    onChangeText={(value) => {setCurrentNumber(value)}}
+                    value={currentNumber}
                 />
                 <Button title="RESET" style={styles.resetButton}
                         onPress={()=>dispatch(reset())}/>
